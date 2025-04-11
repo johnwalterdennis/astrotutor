@@ -61,7 +61,7 @@ const Chat: React.FC = () => {
       <header className="retro-chat-header">
         {/* Main R2-D2 Avatar in Header */}
         <img src={r2d2Avatar} alt="AstroTutor R2-D2" className="header-avatar" />
-        <h1>YOUR ASTROTUTOR R2D2</h1>
+        <h1>SAY HELLO TO YOUR ASTROTUTOR R2D2!</h1>
         {/* Optional: Add some decorative retro elements here */}
         {/* <div className="header-scanline"></div> */}
       </header>
