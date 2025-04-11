@@ -51,6 +51,7 @@ app.use(session({
   
           // --- Initialize or retrieve chat history from session ---
           if (!req.session.chatHistory) {
+            
               // Start history with the initial system prompt/persona instruction
               // Gemini expects alternating user/model roles.
               // We can start with the system prompt as the first 'user' message
@@ -58,7 +59,7 @@ app.use(session({
               req.session.chatHistory = [
                   {
                       role: "user",
-                      parts: [{ text: `You are AstroTutor, an AI tutor inspired by R2-D2. Help the user understand aspects of astronomy in a fun, child-friendly manner. Respond concisely and always end with a friendly R2-D2 sound like 'Beep boop!' or 'Waaaah!'.` }],
+                      parts: [{ text: `You are AstroTutor, an AI tutor inspired by R2-D2. Help the user understand aspects of astronomy in a fun, child-friendly manner. Always Respond concisely and always end with a friendly R2-D2 sound like 'Beep boop!' or 'Waaaah!'.` }],
                   },
                   {
                       // Optional: Add an initial greeting from the bot

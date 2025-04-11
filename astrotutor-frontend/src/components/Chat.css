@@ -1,62 +1,229 @@
-/* frontend/src/components/Chat.css */
-.chat-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #000;
-    color: #00ff00;
-    font-family: 'Press Start 2P', cursive;
-    border: 3px solid #00ff00;
-    border-radius: 10px;
-  }
-  .chat-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .avatar {
-    width: 50px;
-    height: 50px;
-  }
-  .chat-log {
-    height: 400px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-    padding: 10px;
-    background: #111;
-    border-radius: 5px;
-  }
-  .chat-entry {
-    margin: 10px 0;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  .chat-entry.user {
-    text-align: right;
-    background: #222;
-  }
-  .chat-entry.tutor {
-    text-align: left;
-    background: #333;
-  }
-  .chat-form {
-    display: flex;
-    gap: 10px;
-  }
-  .chat-input {
-    flex: 1;
-    padding: 10px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-  }
-  .chat-button {
-    padding: 10px 20px;
-    border: none;
-    background: #00ff00;
-    color: #000;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+/* src/components/Chat.css */
+
+/* --- Import a Retro Font (Optional but recommended) --- */
+/* Add this to your main index.html or index.css */
+/* @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap'); */
+
+:root {
+  /* Retro Color Palette */
+  --retro-bg: #0a0a0a; /* Dark background */
+  --retro-border: #00ff41; /* Bright green for borders/accents */
+  --retro-text: #00ff41; /* Bright green text */
+  --retro-text-user: #ffffff; /* White text for user */
+  --retro-user-bubble-bg: #2a2a2a; /* Dark grey for user bubble */
+  --retro-tutor-bubble-bg: #1a1a1a; /* Slightly darker grey for tutor bubble */
+  --retro-input-bg: #111;
+  --retro-placeholder: #555;
+  --retro-button-bg: var(--retro-border);
+  --retro-button-text: var(--retro-bg);
+  --retro-avatar-border: #444;
+}
+
+.retro-chat-container {
+  font-family: 'VT323', monospace; /* Use the retro font */
+  background-color: var(--retro-bg);
+  border: 3px solid var(--retro-border);
+  border-radius: 5px; /* Slightly rounded corners for a CRT feel */
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  height: 80vh; /* Adjust height as needed */
+  max-height: 700px;
+  overflow: hidden; /* Prevent content spilling out */
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.3); /* Optional glow */
+}
+
+.retro-chat-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #111; /* Slightly different header bg */
+  border-bottom: 2px solid var(--retro-border);
+  color: var(--retro-text);
+}
+
+.header-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%; /* Make header avatar round */
+  border: 2px solid var(--retro-avatar-border);
+  margin-right: 15px;
+  object-fit: cover; /* Ensure image covers the area */
+}
+
+.retro-chat-header h1 {
+  margin: 0;
+  font-size: 1.8em; /* Larger header font */
+  text-transform: uppercase; /* Classic uppercase */
+  letter-spacing: 2px; /* Add some letter spacing */
+  text-shadow: 0 0 5px var(--retro-text); /* Slight glow */
+}
+
+.retro-chat-log {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 15px;
+  color: var(--retro-text);
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: var(--retro-border) var(--retro-bg); /* For Firefox */
+}
+
+/* Webkit Scrollbar Styles */
+.retro-chat-log::-webkit-scrollbar {
+  width: 8px;
+}
+.retro-chat-log::-webkit-scrollbar-track {
+  background: var(--retro-bg);
+}
+.retro-chat-log::-webkit-scrollbar-thumb {
+  background-color: var(--retro-border);
+  border-radius: 0px; /* Square scrollbar thumb */
+  border: 1px solid var(--retro-bg);
+}
+
+.chat-entry {
+  display: flex;
+  margin-bottom: 15px;
+  max-width: 85%; /* Prevent messages taking full width */
+  align-items: flex-end; /* Align avatar bottom with bubble */
+}
+
+.inline-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 3px; /* Slightly rounded square avatar */
+  border: 1px solid var(--retro-avatar-border);
+  flex-shrink: 0; /* Prevent avatar shrinking */
+  object-fit: cover;
+}
+
+.tutor-avatar {
+  margin-right: 10px;
+}
+
+/* Placeholder for potential user avatar */
+.user-avatar-placeholder {
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
+  flex-shrink: 0;
+  /* background-color: var(--retro-avatar-border); Optional placeholder look */
+  /* border-radius: 3px; */
+}
+
+.message-bubble {
+  padding: 8px 12px;
+  border-radius: 6px; /* Keep bubble slightly rounded */
+  border: 1px solid var(--retro-border); /* Add border to bubbles */
+  line-height: 1.4;
+  word-wrap: break-word; /* Ensure long words break */
+}
+
+.message-text {
+  margin: 0;
+  font-size: 1.1em; /* Make text slightly larger */
+  white-space: pre-wrap; /* Respect newlines in messages */
+}
+
+/* Tutor message specific alignment and styling */
+.chat-entry.tutor {
+  justify-content: flex-start; /* Align left */
+  margin-right: auto; /* Push to left */
+}
+.chat-entry.tutor .message-bubble {
+  background-color: var(--retro-tutor-bubble-bg);
+  color: var(--retro-text);
+  border-left-width: 3px; /* Thicker border on one side */
+}
+
+/* User message specific alignment and styling */
+.chat-entry.user {
+  justify-content: flex-end; /* Align right */
+  margin-left: auto; /* Push to right */
+}
+
+.chat-entry.user .message-bubble {
+  background-color: var(--retro-user-bubble-bg);
+  color: var(--retro-text-user); /* Different text color for user */
+  border-color: #777; /* Maybe a different border color for user */
+  border-right-width: 3px;
+}
+
+/* Loading Indicator Style */
+.loading-indicator .message-text i {
+  color: var(--retro-text);
+  opacity: 0.7;
+  /* Optional: Add blinking animation */
+  animation: blink 1.5s linear infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.3; }
+}
+
+
+.retro-chat-form {
+  display: flex;
+  border-top: 2px solid var(--retro-border);
+  padding: 10px;
+  background-color: #111; /* Match header bg */
+}
+
+.retro-chat-input {
+  flex-grow: 1;
+  border: 1px solid var(--retro-border);
+  background-color: var(--retro-input-bg);
+  color: var(--retro-text);
+  padding: 10px 12px;
+  font-family: inherit; /* Inherit retro font */
+  font-size: 1em;
+  border-radius: 3px;
+  margin-right: 10px;
+  outline: none; /* Remove default outline */
+}
+
+.retro-chat-input::placeholder {
+  color: var(--retro-placeholder);
+  opacity: 1; /* Ensure placeholder is visible */
+}
+
+.retro-chat-input:focus {
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.5); /* Glow on focus */
+}
+
+.retro-chat-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.retro-chat-button {
+  background-color: var(--retro-button-bg);
+  color: var(--retro-button-text);
+  border: none;
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: 1.2em; /* Make button text slightly larger */
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.retro-chat-button:hover:not(:disabled) {
+  background-color: var(--retro-text);
+  color: #000;
+  text-shadow: 0 0 5px #000;
+}
+
+.retro-chat-button:active:not(:disabled) {
+  transform: translateY(1px); /* Simple press effect */
+}
+
+.retro-chat-button:disabled {
+  background-color: #555; /* Greyed out when disabled */
+  color: #999;
+  cursor: not-allowed;
+}
