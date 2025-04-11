@@ -8,9 +8,7 @@ const axios = require('axios');
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(cors({
-    origin: 'https://astrotutor-r2d2.vercel.app/'  // replace with your Vercel URL
-  }));
+
 
 
 app.post('/api/tutor', async (req, res) => {
