@@ -1,5 +1,5 @@
-require('dotenv').config({ path: '../.env' });
-// console.log('Gemini API URL:', process.env.GEMINI_API_KEY);
+require('dotenv').config({ path: '.env' });
+console.log('Gemini API URL:', process.env.GEMINI_API_KEY);
 // console.log(process.env);
 const express = require('express');
 const cors = require('cors');
