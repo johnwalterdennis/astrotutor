@@ -21,7 +21,7 @@ const Chat: React.FC = () => {
     setChatLog((prevLog) => [...prevLog, userMessage]);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/tutor', { message });
+      const response = await axios.post('https://literate-xylophone-q55vpv45wr9hqx4-5000.app.github.dev/api/tutor', { message });
       const tutorMessage: ChatMessage = { sender: 'tutor', text: response.data.reply };
       setChatLog((prevLog) => [...prevLog, tutorMessage]);
       // Optionally, you can add sound effects or animations for the tutor response here.
