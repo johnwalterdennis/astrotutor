@@ -1,0 +1,62 @@
+/* frontend/src/components/Chat.css */
+.chat-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #000;
+    color: #00ff00;
+    font-family: 'Press Start 2P', cursive;
+    border: 3px solid #00ff00;
+    border-radius: 10px;
+  }
+  .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .avatar {
+    width: 50px;
+    height: 50px;
+  }
+  .chat-log {
+    height: 400px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #111;
+    border-radius: 5px;
+  }
+  .chat-entry {
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .chat-entry.user {
+    text-align: right;
+    background: #222;
+  }
+  .chat-entry.tutor {
+    text-align: left;
+    background: #333;
+  }
+  .chat-form {
+    display: flex;
+    gap: 10px;
+  }
+  .chat-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+  }
+  .chat-button {
+    padding: 10px 20px;
+    border: none;
+    background: #00ff00;
+    color: #000;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
