@@ -1,4 +1,6 @@
 require('dotenv').config;
+console.log('Gemini API URL:', process.env.GEMINI_API_KEY);
+// console.log(process.env);
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
@@ -11,9 +13,10 @@ app.post('/api/tutor', async (req, res) => {
     try {
       const { message } = req.body;
       const prompt = `You are AstroTutor, an AI tutor inspired by R2-D2. Help the user understand aspects of astronomy in a fun, child-friendly manner. The user asked: "${message}"`;
-  
+     
+
       const apiResponse = await axios.post(
-        GEMINI_API_KEY, // Change to the actual Gemini API endpoint
+        process.env.GEMINI_API_KEY, // Change to the actual Gemini API endpoint
         { prompt },
         {
           headers: {
