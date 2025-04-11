@@ -1,8 +1,7 @@
-import { useState } from 'react'
 import Chat from './components/Chat';
 import './App.css'
 
-function App() {git
+function App() {
   return (
     <div className="App">
       <Chat />
