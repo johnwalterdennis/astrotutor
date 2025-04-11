@@ -21,7 +21,7 @@ const Chat: React.FC = () => {
     setChatLog((prevLog) => [...prevLog, userMessage]);
 
     try {
-      const response = await axios.post('https://astrotutor-591b88a8e9b1.herokuapp.com/api/tutor', { message });
+      const response = await axios.post(' https://astrotutor-591b88a8e9b1.herokuapp.com/api/tutor', { message });
       const tutorMessage: ChatMessage = { sender: 'tutor', text: response.data.reply };
       setChatLog((prevLog) => [...prevLog, tutorMessage]);
       // Optionally, you can add sound effects or animations for the tutor response here.
