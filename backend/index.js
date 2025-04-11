@@ -10,10 +10,8 @@ app.use(express.json());
 app.post('/api/tutor', async (req, res) => {
     try {
       const { message } = req.body;
-      // Construct the prompt for a child-friendly, astronomy-focused response
       const prompt = `You are AstroTutor, an AI tutor inspired by R2-D2. Help the user understand aspects of astronomy in a fun, child-friendly manner. The user asked: "${message}"`;
   
-      // Call the Gemini API (replace <GEMINI_API_URL> with the real endpoint)
       const apiResponse = await axios.post(
         GEMINI_API_KEY, // Change to the actual Gemini API endpoint
         { prompt },
